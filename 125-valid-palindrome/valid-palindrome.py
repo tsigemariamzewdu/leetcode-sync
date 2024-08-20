@@ -8,7 +8,14 @@ class Solution(object):
         for i in s.lower():
             if i.isalpha() or i.isdigit():
                 newString+=i
-        reversedString=newString[::-1]
-        return newString==reversedString
+        left=0
+        right=len(newString)-1
+        while left <right:
+            if newString[left]!=newString[right]:
+                return False
+            left +=1
+            right -=1
+        return True
+        
         
         
