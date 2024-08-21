@@ -7,13 +7,12 @@ class Solution(object):
         """
         costs.sort()
         count = 0
-        sum1 = 0
-        
         for cost in costs:
-            if sum1 + cost <= coins:
-                sum1 += cost
+            if coins >= cost:
+                coins -= cost
                 count += 1
             else:
                 break
-        
         return count
+
+       
