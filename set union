@@ -1,0 +1,7 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+ne=int(input())
+englishs=set(map(int,input().split()))
+nf=int(input())
+frenches=set(map(int,input().split()))
+un=englishs.union(frenches)
+print(len(un))
