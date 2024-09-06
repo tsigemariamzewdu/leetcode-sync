@@ -5,14 +5,18 @@ class Solution(object):
         :type coins: int
         :rtype: int
         """
+        count=0
         costs.sort()
-        count = 0
-        for cost in costs:
-            if coins >= cost:
-                coins -= cost
-                count += 1
-            else:
+        if costs[0]>coins:
+            return 0
+        for i in costs:
+            coins-=i
+            if coins>=0:
+                count+=1
+            
+            if coins<0:
                 break
+            
         return count
 
        
