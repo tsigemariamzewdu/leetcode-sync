@@ -1,9 +1,5 @@
-class Solution(object):
-    def isPalindrome(self, x):
-        """
-        :type x: int
-        :rtype: bool
-        """
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
         reversedNum=0
         myNum=x
         while myNum>0:
@@ -12,3 +8,5 @@ class Solution(object):
             myNum=myNum//10
         value= x==reversedNum
         return value
+
+        
