@@ -1,22 +1,17 @@
-class Solution(object):
-    def decrypt(self, code, k):
-        """
-        :type code: List[int]
-        :type k: int
-        :rtype: List[int]
-        """
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
         n = len(code)
-        result = [0] * n
+        
+        
+        if k == 0:
+            return [0] * n
+
+       
+        extended_code = code * 2
+
         
         if k > 0:
-            newcode = code + code + code
-            for i in range(n):
-                result[i] = sum(newcode[n + i + 1 : n + i + 1 + k])
-        elif k < 0:
-            newcode = code + code
-            for i in range(n):
-                result[i] = sum(newcode[n + i + k : n + i])
+            return [sum(extended_code[i + 1:i + 1 + k]) for i in range(n)]
         else:
-            return result
-        
-        return result
+            k = abs(k)
+            return [sum(extended_code[i + n - k:i + n]) for i in range(n)]
