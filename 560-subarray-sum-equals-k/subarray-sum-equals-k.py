@@ -1,18 +1,20 @@
-class Solution(object):
-    def subarraySum(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: int
-        """
-        res=0
-        cursum=0
-        prefixsum={0:1}
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        prefixsum = 0
+        prefixsumCount = {0: 1}  
+        count = 0
         
-        for n in nums:
-            cursum+=n
-            diff=cursum-k
-            res+= prefixsum.get(diff,0)
-            prefixsum[cursum]=1+prefixsum.get(cursum,0)
-        return res
-      
+        for num in nums:
+           
+            prefixsum += num
+            
+            
+            if (prefixsum - k) in prefixsumCount:
+                count += prefixsumCount[prefixsum - k]  
+           
+            if prefixsum in prefixsumCount:
+                prefixsumCount[prefixsum] += 1 
+            else:
+                prefixsumCount[prefixsum] = 1  
+        
+        return count
