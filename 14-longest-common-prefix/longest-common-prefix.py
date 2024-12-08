@@ -1,10 +1,5 @@
-class Solution(object):
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
-        # edge case
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
         if not strs:
             return ""
         prefix=strs[0]
@@ -16,4 +11,4 @@ class Solution(object):
                     return ""
         return prefix
         
-
+        
