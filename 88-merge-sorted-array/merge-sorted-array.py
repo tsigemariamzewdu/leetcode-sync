@@ -1,30 +1,31 @@
-class Solution(object):
-    def merge(self, nums1, m, nums2, n):
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: None Do not return anything, modify nums1 in-place instead.
+        Do not return anything, modify nums1 in-place instead.
+
         """
-        
-        i=m-1
-        j=n-1
+        # i need two pointers one for num1 and the other for num2 it is still sorting and i need to put them in reverse order i guess
+        n1= m-1
+        n2= n-1
         k=m+n-1
-        while i>=0 and j>=0:
-            if nums1[i]>nums2[j]:
-                nums1[k]=nums1[i]
-                i-=1
+        while n1>=0 and n2>=0:
+            if nums1[n1]>=nums2[n2]:
+                nums1[k]=nums1[n1]
+                k-=1
+                n1-=1
+                
             else:
-                nums1[k]=nums2[j]
-                j-=1
+                nums1[k]=nums2[n2]
+                k-=1
+                n2-=1
+        # there is another egde case that is the case where there is n and no m
+        while n2>=0:
+            nums1[k]=nums2[n2]
             k-=1
-
-        while j>=0:
-            nums1[k]=nums2[j]
-            j-=1
-            k-=1
+            n2-=1
+    
+       
+        
             
-
 
         
