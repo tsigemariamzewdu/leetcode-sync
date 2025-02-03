@@ -1,23 +1,17 @@
-class Solution(object):
-    def isAnagram(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        hash_s = {}
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        dict_s = {}
         for i in s:
-            if i in hash_s:
-                hash_s[i] += 1
+            if i in dict_s:
+                dict_s[i] += 1
             else:
-                hash_s[i] = 1
+                dict_s[i] = 1
         for j in t:
-            if j in hash_s:
-                hash_s[j] -= 1
+            if j in dict_s:
+                dict_s[j] -= 1
             else:
                 return False
-        for value in hash_s.values():
+        for value in dict_s.values():
             if value != 0:
                 return False
         return True
-        
