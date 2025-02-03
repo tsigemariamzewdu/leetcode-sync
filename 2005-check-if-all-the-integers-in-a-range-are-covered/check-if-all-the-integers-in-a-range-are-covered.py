@@ -6,14 +6,20 @@ class Solution(object):
         :type right: int
         :rtype: bool
         """
+        k=0
         for i in range(left,right+1):
-            covered=False
-            for start,end in ranges:
-                if start<=i <=end:
-                    covered=True
+            flag=False
+            for s,e in ranges:
+                if s<=i<=e:
+                    flag=True
                     break
-            if not covered:
+               
+            if not flag:
                 return False
         return True
+        
+
+
+
 
         
