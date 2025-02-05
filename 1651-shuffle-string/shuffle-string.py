@@ -1,19 +1,6 @@
-class Solution(object):
-    def restoreString(self, s, indices):
-        """
-        :type s: str
-        :type indices: List[int]
-        :rtype: str
-        """
-        result=[None]*len(s)
-
-        for index in range(len(s)):
-            finalpos=indices[index]
-            char=s[index]
-
-            result[finalpos]=char
-        
-        return "".join(result)
-
-
-       
+class Solution:
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        result=[0]*len(s)
+        for i in range(len(indices)):
+            result[indices[i]]=s[i]
+        return "".join(result)      
