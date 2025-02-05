@@ -1,22 +1,25 @@
 class Solution:
     def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
-        cp=collections.defaultdict(int)
+        result=[]
+        diction=collections.defaultdict(int)
+        for domain in cpdomains:
+            count,domains=domain.split(" ")
 
-        for cpdomain in cpdomains:
-            current=cpdomain.split(" ")
-            count= int(current[0])
-            domain = current[1]
-            
-            currentdomain= ""
-            for sub in domain.split('.')[::-1]:
-                if currentdomain =="":
-                    currentdomain =sub
+            current_domain=""
+
+            dom=domains.split(".")[::-1]
+
+            for d in dom:
+                if current_domain=="":
+                    current_domain=d
                 else:
-                    currentdomain=sub + "." + currentdomain
-                cp[currentdomain] += count
-        results=[]
-        for key in cp.keys():
-            results.append(str(cp[key])+ " "+ key)
-        return results
+                    current_domain=d+"."+current_domain
+                diction[current_domain]+=int(count)
+        for keys in diction:
+            result.append(str(diction[keys]) + " " + keys) 
+        return result
+
+        
+     
 
 
