@@ -1,16 +1,16 @@
-class Solution(object):
-    def sortPeople(self, names, heights):
-        """
-        :type names: List[str]
-        :type heights: List[int]
-        :rtype: List[str]
-        """
-        mydict={}
-        for name,height in zip(names,heights):
-            mydict[height]=name
-        sorted_height=sorted(mydict.keys(), reverse=True)
-        newlist=[]
-        for i in sorted_height:
-            newlist.append(mydict[i])
-        return newlist
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        heighttonames={}
+        result=[]
+        for ii in range(len(heights)):
+            heighttonames[heights[ii]]=names[ii]
+        n=len(heights)
+        for i in range(n):
+            for j in range(1,n-i):
+                if heights[j]<heights[j-1]:
+                    heights[j],heights[j-1]=heights[j-1],heights[j]
+        for k in range(n-1,-1,-1):
+            result.append(heighttonames[heights[k]])
+        return result
+
         
