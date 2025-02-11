@@ -1,16 +1,13 @@
-class Solution(object):
-    def maxCoins(self, piles):
-        """
-        :type piles: List[int]
-        :rtype: int
-        """
-        piles.sort(reverse=True)
-        result=0
-
-        n=len(piles)//3 #this tells us how many groups of three are there in the list
-
-        for i in range(n):
-            result += piles[2*i +1]
-        return result
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        piles.sort()
+        n=len(piles)
+        div=n//3
+        piles=piles[div:]
+        summ=0
+        for i in range(len(piles)):
+            if i%2==0:
+                summ+=piles[i]
+        return summ
 
         
