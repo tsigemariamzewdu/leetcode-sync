@@ -1,25 +1,21 @@
-class Solution(object):
-    def dividePlayers(self, skill):
-        """
-        :type skill: List[int]
-        :rtype: int
-        """
-       
+class Solution:
+    def dividePlayers(self, skill: List[int]) -> int:
         skill.sort()
-        left = 0
-        right = len(skill) - 1
-        condition = skill[left] + skill[right] 
-        
-        summ = 0
-        while left < right:
-            pro = skill[left] * skill[right]
-            if skill[left] + skill[right] == condition:
-                summ += pro
-                left += 1
-                right -= 1
-            else:
-                return -1
-        return summ
+        l=0
+        r=len(skill)-1
+        if len(skill)>2:
+            team=skill[l]+skill[r]
+            teams=[]
+            while l<r:
+                if skill[l]+skill[r]!=team:
+                    return -1
+                else:
+                    teams.append(skill[l]*skill[r])
+                    l+=1
+                    r-=1
+            return sum(teams)
+        else:
+            return skill[0]*skill[1]
 
-
         
+    
