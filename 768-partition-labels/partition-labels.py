@@ -1,25 +1,38 @@
-class Solution(object):
-    def partitionLabels(self, s):
-        """
-        :type s: str
-        :rtype: List[int]
-        """
-    # s="ababcbaca defegde hijhklij"
-    #  the first step to create a dictionary to store the last occurence of the str
-        last_occur={}
-        for i,char in  enumerate(s):
-            if  char in s:
-                last_occur[char]=i
-    # now lets intialize variables
-        result=[]
-        start=0
-        end=0
+import copy
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        res=[]
+        mydict={}
+        for i in range(len(s)):
+           mydict[s[i]]=i
+        
 
-        for i,char in enumerate(s):
-            end=max(end,last_occur[char])
+        left=0
+        right=mydict[s[0]]
+        while right<len(s):
+            while mydict[s[left]]<=right and left<right:
+                left+=1
+                if  mydict[s[left]]>right:
+                    right=mydict[s[left]]
+        
+            res.append(right+1)
+            
+            if right+1<len(s):
+                left=right+1
+                right=mydict[s[left]]
+            else:
+                break
+        c_res=copy.deepcopy(res)
+        for i in range(len(res)):
+            if i==0:
+                res[i]=c_res[i]
+            else:
+                res[i]=c_res[i]-c_res[i-1]
+        return res
+                
 
-            if i==end:
-                result.append(i-start+1)
-                start= i+1
-        return result
 
+       
+
+           
+        
