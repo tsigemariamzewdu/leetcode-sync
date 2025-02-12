@@ -4,18 +4,22 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
-        max_area = 0
-        left=0 
-        right=len(height)-1
-        while left<right:
-            width=right-left
-            area_= width*min(height[left],height[right])
-            max_area=max(max_area,area_)
-            if height[left]<height[right]:
-                left +=1
+        res=[]
+        l=0
+        r=len(height)-1
+
+        while l<r:
+            mini=min(height[l],height[r])
+            print(height[l])
+            print(height[r])
+            res.append(mini*(r-l))
+            if mini==height[l]:
+                l+=1
             else:
-                right-=1
-        return max_area
+                r-=1
+        return max(res)
+
+        
 
         
 
