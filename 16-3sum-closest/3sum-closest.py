@@ -1,29 +1,27 @@
-class Solution(object):
-    def threeSumClosest(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
-        ans=nums[0]+nums[1]+nums[2]
-        # since we are going to be using a two pointer we shall sort the array like now
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
-        # we need three pointers actually since we are going to add three numbers
-        for a in range(len(nums)-2):
- # why -2 since this pointer is the first pointer we need to leave exactly two places 
-            if a>0 and nums[a]==nums[a-1]:
+        n=len(nums)
+        closest_sum=float('inf')
+
+        for i in range(n):
+            if i>0 and nums[i]==nums[i-1]:
                 continue
-            l=a+1
-            r=len(nums)-1
+            l=i+1
+            r=n-1
 
             while l<r:
-                newsum=nums[a]+nums[l]+nums[r]
-                if newsum== target:
-                    return newsum
-                if abs(newsum-target)<abs(ans-target):
-                    ans=newsum
-                if newsum > target:
+                cur_sum=nums[i]+nums[l]+nums[r]
+
+                if abs(cur_sum-target)<abs(closest_sum-target):
+                    closest_sum=cur_sum
+                if cur_sum==target:
+                    return cur_sum
+                elif cur_sum<target:
+                    l+=1
+                else:
                     r-=1
-                if newsum < target:
-                    l +=1
-        return ans
+        return closest_sum
+
+
+        
