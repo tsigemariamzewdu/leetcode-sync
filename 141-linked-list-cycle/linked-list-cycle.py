@@ -10,14 +10,15 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        mydict={}
-        current=head
-        while current:
-            if current in mydict:
+        slow=head
+        fast=head
+
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+
+            if slow==fast:
                 return True
-            else:
-                mydict[current]=1
-            current=current.next
         return False
         
         
