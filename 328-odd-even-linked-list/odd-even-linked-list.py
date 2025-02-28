@@ -5,26 +5,33 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        oddlist=ListNode()
-        evenlist=ListNode()
-
-        oddpointer=oddlist
-        evenpointer=evenlist
-
-        count=1
         cur=head
+        count=0
         while cur:
-            if count%2==0:
-                evenpointer.next=cur
-                evenpointer=evenpointer.next
-            else:
-                oddpointer.next=cur
-                oddpointer=oddpointer.next
-            cur=cur.next
             count+=1
-        oddpointer.next=evenlist.next
-        evenpointer.next=None
-        return oddlist.next
+            cur=cur.next
+        if count<3:
+            return head
+        oddb=head
+
+        evenb=head.next if head else None
+        co=oddb
+        ce=evenb
+
+        for _ in range(count//2):
+            co.next=co.next.next if co.next else None
+            ce.next=ce.next.next if ce.next else None
+
+            ce=ce.next
+            if co and co.next:
+                co=co.next 
+        
+        co.next=evenb
+        return oddb
+
+
+            
+       
 
 
         
