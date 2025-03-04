@@ -1,7 +1,7 @@
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
+        
         countr=0
-        countl=0
 
         realcount=0
         j=0
@@ -9,11 +9,10 @@ class Solution:
             if s[i]=="R":
                 countr+=1
             else:
-                countl+=1
-            if countr==countl:
+                countr-=1
+            if countr==0:
                 realcount+=1
-                countr=0
-                countl=0
+               
         return realcount
             
 
