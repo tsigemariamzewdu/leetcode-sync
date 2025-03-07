@@ -1,23 +1,13 @@
-class Solution(object):
-    def dailyTemperatures(self, temperatures):
-        """
-        :type temperatures: List[int]
-        :rtype: List[int]
-        """
-        # monotonic stack
-        result=[0]* len(temperatures) # we intialized with all zeros
-        stack=[] # here we have the stack to store the index od the temperatures
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        result=[0]*len(temperatures)
+        stack=[]
 
-        for i , temperature in enumerate(temperatures):# here i am using enumerate since i am concerned about the index
-            while stack and temperatures[stack[-1]]<temperature:
-                previous=stack.pop()
-                result[previous]=i-previous 
+        for i in range(len(temperatures)):
+            while stack and temperatures[i]>temperatures[stack[-1]]:
+                val=stack.pop()
+                result[val]=i-val
+                
             stack.append(i)
         return result
-
-
-
-      
-                
-
-
+        
