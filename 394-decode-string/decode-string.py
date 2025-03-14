@@ -1,34 +1,32 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        
         stack=[]
-       
-  
 
-        for char in s:
-           
-            if char != "]":
-                stack.append(char)
-                
-            else: 
-                
-                curr_str = ""
-                while stack[-1] != "[":
-                    curr_str = stack.pop() + curr_str
-               
+        for i in range(len(s)):
+            if s[i] !="]":
+                stack.append(s[i])
+            else:
+                temp=[]
+                while stack and stack[-1]!="[":
+                    temp.append(stack.pop())
                 stack.pop()
-
-                
-                curr_num = ""
+                mul=[]
                 while stack and stack[-1].isdigit():
-                    curr_num = stack.pop() + curr_num
+                    mul.append(stack.pop())
+                temp=temp[::-1]
+                mul=mul[::-1]
                 
-                curr_str = int(curr_num) * curr_str
-                stack.append(curr_str)
-
+                result=("".join(temp))*int("".join(mul))
+                for j in result:
+                    stack.append(j)
         return "".join(stack)
 
+       
 
+            
+        
+        
+        
 
 
                 
