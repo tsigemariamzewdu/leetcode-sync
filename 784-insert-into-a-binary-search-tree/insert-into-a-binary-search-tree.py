@@ -9,19 +9,21 @@ class Solution:
         head=root
         if root==None:
             return TreeNode(val)
-        while root:
+        def helper(root):
             if val>root.val:
                 if root.right==None:
                     root.right=TreeNode(val)
-                    break
-                root=root.right
+                    return
+                helper(root.right)
             else:
                 if root.left==None:
                     root.left=TreeNode(val)
-                    break
+                    return
       
-                root=root.left
-        return head
+                helper(root.left)
+        helper(root)
+        return root
+        
         
         
 
