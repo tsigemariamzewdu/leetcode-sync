@@ -16,19 +16,19 @@ class Solution:
         
 
         
-        def helper(res):
-            if len(res)==0:
+        def helper(start,end):
+            if start>end:
                 return None
-            if len(res)==1:
-                return TreeNode(res[0])
+            if start==end:
+                return TreeNode(res[start])
 
-            mid=len(res)//2
+            mid=(start+end)//2
 
             root=TreeNode(res[mid])
-            root.left=helper(res[:mid])
-            root.right=helper(res[mid+1:])
+            root.left=helper(start,mid-1)
+            root.right=helper(mid+1,end)
 
             return root
-        return helper(res)
+        return helper(0,len(res)-1)
     
                 
