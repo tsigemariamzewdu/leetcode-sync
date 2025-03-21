@@ -5,28 +5,31 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sortedArrayToBST(self, numss: List[int]) -> Optional[TreeNode]:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
 
       
-        def helper(nums):
-            if len(nums)==0:
+        def helper(start, end):
+            if start > end:
                 return None
-            if len(nums)==1:
-                return TreeNode(nums[0])
+            if start==end:
+                return TreeNode(nums[start])
+            # if len(nums)==0:
+            #     return None
+            # if len(nums)==1:
+            #     return TreeNode(nums[0])
             
           
-            n=len(nums)
-        
-            leftarr=nums[:n//2]
-            rightarr=nums[(n//2)+1:]
+           
+            mid=(start+end)//2
+            
        
-            root=TreeNode(nums[n//2])
-            root.left=helper(leftarr)
-            root.right=helper(rightarr)
+            root=TreeNode(nums[mid])
+            root.left=helper(start,mid-1)
+            root.right=helper(mid+1,end)
 
             return root
 
-        return helper(numss)
+        return helper(0,len(nums)-1)
        
 
     
