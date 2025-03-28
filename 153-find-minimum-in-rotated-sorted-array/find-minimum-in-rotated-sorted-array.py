@@ -1,24 +1,19 @@
-class Solution(object):
-    def findMin(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        left, right = 0, len(nums) - 1
-        
-        while left < right:
-            mid = (left + right) // 2
-            
-            
-            if mid > 0 and nums[mid] < nums[mid - 1]:
-                return nums[mid]
-            if mid < len(nums) - 1 and nums[mid] > nums[mid + 1]:
-                return nums[mid + 1]
-            
-            
-            if nums[mid] >= nums[left]:  
-                left = mid + 1
-            else:  
-                right = mid
-        
-        return nums[0]  
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        firstarr=nums[0]
+        def isvalid(mid):
+            if nums[mid]>=firstarr:
+                return False
+            return True
+
+        low=0
+        high=len(nums)-1
+        while low<=high:
+            mid=(high+low)//2
+            if isvalid(mid):
+                high=mid-1
+            else:
+                low=mid+1
+        if low>=0 and low<len(nums):
+            return nums[low]
+        return nums[low-len(nums)]
