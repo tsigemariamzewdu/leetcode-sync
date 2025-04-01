@@ -22,15 +22,15 @@ class Solution:
             
             return merged
 
-        def mergeSort(arr):
-            mid=len(arr)//2
-            if len(arr) == 1:
-                return arr
-            rightarr=mergeSort(arr[mid:])
-            leftarr=mergeSort(arr[:mid])
+        def mergeSort(left,right):
+            mid=(left+right)//2
+            if left -right==0:
+                return [nums[left]]
+            leftarr=mergeSort(left,mid)
+            rightarr=mergeSort(mid+1,right)
 
 
             return merge(leftarr, rightarr)
-        return mergeSort(nums)
+        return mergeSort(0,len(nums)-1)
          
 
