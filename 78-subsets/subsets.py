@@ -1,21 +1,10 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
-        path=[]
-        ans=[]
-
-        def backtrack(i):
-            # base case
-            if i==len(nums):
-                ans.append(path[:])
-                return
-           
-                
-            backtrack(i+1)
-            path.append(nums[i])
-            backtrack(i+1)
-            path.pop()
-                    
-
-        backtrack(0)
-        return ans
+        power_set=[]
+        for mask in range(1<<len(nums)):
+            subset=[]
+            for i in range(len(nums)):
+                if mask & (1<<i):
+                    subset.append(nums[i])
+            power_set.append(subset)
+        return power_set
