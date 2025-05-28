@@ -4,13 +4,13 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        words=s.split() # this returns a list as we know 
+        words=s.split() 
         sorted_words =sorted(words, key=lambda x: x[-1])
 
-        news=[]
+        res=[]
         for word in sorted_words:
-            news.append(word[:-1]) # since we dont want the number to show up 
-        return " ".join(news)
+            res.append(word[:-1]) 
+        return " ".join(res)
 
        
         
