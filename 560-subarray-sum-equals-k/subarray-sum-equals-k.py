@@ -1,7 +1,7 @@
 from collections import defaultdict
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        count=0
+        c=0
         mydict=defaultdict(int)
         prefsum=0
 
@@ -10,7 +10,7 @@ class Solution:
         for n in nums:
             prefsum+=n
             if prefsum-k in mydict:
-                count+= mydict[prefsum-k]
+                c+= mydict[prefsum-k]
             mydict[prefsum]+= 1
-        return count
+        return c
     
