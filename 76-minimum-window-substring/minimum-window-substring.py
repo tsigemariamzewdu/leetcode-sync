@@ -10,7 +10,7 @@ class Solution:
 
         
         window_freq=defaultdict(int)
-        maxlen=n+1
+        maximumlength=n+1
         rleft=0
         rright=0
 
@@ -24,8 +24,8 @@ class Solution:
             while acquired==required:
                 left_cur=s[left]
                 
-                if  right -left+1 < maxlen:
-                    maxlen=right-left+1
+                if  right -left+1 < maximumlength:
+                    maximumlength=right-left+1
                     rleft=left
                     rright=right
 
@@ -40,7 +40,7 @@ class Solution:
 
 
 
-        if maxlen==n+1:
+        if maximumlength==n+1:
             return ""
         else:
             return s[rleft:rright+1]
