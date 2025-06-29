@@ -8,7 +8,7 @@ class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
        
     
-        res=[]
+        ans=[]
         
         def helper(root,result,realresult):
 
@@ -19,7 +19,7 @@ class Solution:
             
                 result+= str(root.val)
                 if not root.left and not root.right:
-                    res.append(int(result))
+                    ans.append(int(result))
                    
               
                 helper(root.left,result,realresult)
@@ -27,6 +27,6 @@ class Solution:
 
            
         helper(root,"",0)
-        return sum(res)
+        return sum(ans)
         
        
