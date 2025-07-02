@@ -4,12 +4,12 @@ class Solution:
         for i in stones:
             heappush(heap,-i)
         while len(heap)>1:
-            first=-heappop(heap)
+            fir=-heappop(heap)
             second=-heappop(heap)
-            if first==second:
+            if fir==second:
                 continue
             else:
-                heappush(heap,-(abs(second-first)))
+                heappush(heap,-(abs(second-fir)))
         if heap:
             return -heap[0]
         return 0
