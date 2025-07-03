@@ -1,11 +1,11 @@
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
-        ans=[]
+        res=[]
 
         path=[]
         def backtrack(idx):
             if len(path)>=4:
-                ans.append(".".join(path))
+                res.append(".".join(path))
                 return
             if idx>len(s)-1:
                 return
@@ -33,7 +33,7 @@ class Solution:
                         path.pop()
         backtrack(0)
         result=[]
-        for i in ans:
+        for i in res:
             if len(i) - 3 == len(s):
 
                 result.append(i)
