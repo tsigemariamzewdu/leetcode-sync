@@ -10,20 +10,20 @@ class Solution:
     
         ans=[]
         
-        def helper(root,result,realresult):
+        def helper(root,res,realresult):
 
             if not root:
                 return 
             if root:
                
             
-                result+= str(root.val)
+                res += str(root.val)
                 if not root.left and not root.right:
-                    ans.append(int(result))
+                    ans.append(int(res))
                    
               
-                helper(root.left,result,realresult)
-                helper(root.right,result,realresult)
+                helper(root.left,res,realresult)
+                helper(root.right,res,realresult)
 
            
         helper(root,"",0)
