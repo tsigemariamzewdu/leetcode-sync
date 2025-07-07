@@ -35,15 +35,15 @@ class Solution:
             rooti=find(i)
             group[rooti].append(e)
         # print(group)
-        res=[]
+        ans=[]
 
         for i in group:
             result=[]
             name=accounts[i][0]
             result.append(name)
             result.extend(sorted(group[i]))
-            res.append(result)
-        return res
+            ans.append(result)
+        return ans
 
         
         
