@@ -1,10 +1,12 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        power_set=[]
-        for mask in range(1<<len(nums)):
-            subset=[]
+        res=[]
+        for num in range(2**(len(nums))):
+            minires=[]
+
             for i in range(len(nums)):
-                if mask & (1<<i):
-                    subset.append(nums[i])
-            power_set.append(subset)
-        return power_set
+            
+                if num & (1<<i)!=0:
+                    minires.append(nums[i])
+            res.append(minires)
+        return res
