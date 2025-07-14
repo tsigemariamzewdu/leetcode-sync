@@ -2,7 +2,7 @@ class MinStack(object):
 
     def __init__(self):
         self.stack=[]
-        self.minstack=[]
+        self.ministack=[]
 
         
 
@@ -12,16 +12,16 @@ class MinStack(object):
         :rtype: None
         """
         self.stack.append(val)
-        if not self.minstack or  val<=self.minstack[-1]:
-            self.minstack.append(val)
+        if not self.ministack or  val<=self.ministack[-1]:
+            self.ministack.append(val)
         
 
     def pop(self):
         """
         :rtype: None
         """
-        if self.minstack[-1]==self.stack[-1]:
-            self.minstack.pop()
+        if self.ministack[-1]==self.stack[-1]:
+            self.ministack.pop()
         self.stack.pop()
 
         
@@ -36,7 +36,7 @@ class MinStack(object):
         """
         :rtype: int
         """
-        return self.minstack[-1]
+        return self.ministack[-1]
 # so the minstack is a monotonincally decreasing stack 
 
 # Your MinStack object will be instantiated and called as such:
