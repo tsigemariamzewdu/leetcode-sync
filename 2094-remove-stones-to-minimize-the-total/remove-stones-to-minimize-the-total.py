@@ -6,17 +6,17 @@ class Solution:
         for  i in piles:
             heapq.heappush(heap,-i)
 
-        res=sum(piles)
+        result=sum(piles)
 
         while count<k:
             if heap:
                 number=-heapq.heappop(heap)
-                res -=number 
-                res += ceil(number/2)
+                result -=number 
+                result += ceil(number/2)
                 # print(ceil(number/2))
                 heapq.heappush(heap,-(ceil(number/2)))
             count +=1
-        return res
+        return result
         
 
         
