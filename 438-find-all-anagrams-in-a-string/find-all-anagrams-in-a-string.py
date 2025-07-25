@@ -6,12 +6,12 @@ class Solution:
 
         k=len(p)
         l=0
-        res=[]
+        ans=[]
         if k>len(s):
-            return res
+            return ans
         mydict=Counter(s[:k])
         if mydict==target:
-            res.append(l)
+            ans.append(l)
         
         
         for r in range(k,len(s)):
@@ -20,11 +20,11 @@ class Solution:
             mydict[s[r]]+=1
             l+=1
             if mydict==target:
-                res.append(l)
+                ans.append(l)
             if mydict[s[l]]==0:
                 del mydict[s[l]]
            
-        return res
+        return ans
             
 
             
