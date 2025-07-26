@@ -18,7 +18,7 @@ class Solution:
 
                 if mat[i][j]==0:
                     q.append((i,j))
-        result=[[0]*cols for _ in range(rows)]
+        res=[[0]*cols for _ in range(rows)]
 
         while q:
             r,c=q.popleft()
@@ -28,7 +28,7 @@ class Solution:
                 nc=c+dc
 
                 if inbound(nr,nc) and mat[nr][nc]!=0:
-                    result[nr][nc]=result[r][c]+1
+                    res[nr][nc]=res[r][c]+1
                     mat[nr][nc]=0
                     q.append((nr,nc))
-        return result
+        return res
