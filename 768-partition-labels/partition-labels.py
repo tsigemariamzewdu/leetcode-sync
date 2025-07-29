@@ -1,7 +1,7 @@
 import copy
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        res=[]
+        result=[]
         mydict={}
         for i in range(len(s)):
            mydict[s[i]]=i
@@ -15,20 +15,20 @@ class Solution:
                 if  mydict[s[left]]>right:
                     right=mydict[s[left]]
         
-            res.append(right+1)
+            result.append(right+1)
             
             if right+1<len(s):
                 left=right+1
                 right=mydict[s[left]]
             else:
                 break
-        c_res=copy.deepcopy(res)
-        for i in range(len(res)):
+        c_result=copy.deepcopy(result)
+        for i in range(len(result)):
             if i==0:
-                res[i]=c_res[i]
+                result[i]=c_result[i]
             else:
-                res[i]=c_res[i]-c_res[i-1]
-        return res
+                result[i]=c_result[i]-c_result[i-1]
+        return result
                 
 
 
