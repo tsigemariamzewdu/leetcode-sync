@@ -34,4 +34,3 @@ class Solution:
             if isvalid(j):
                 result.append(j)
         return result
-
