@@ -1,21 +1,18 @@
-from collections import defaultdict
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
-        forward=defaultdict(list)
-        newres=[]
-        rows=len(mat)
-        cols=len(mat[0])
+        lists=defaultdict(list)
 
-        for r in range(rows):
-            for c in range(cols):
-                forward[r+c].append(mat[r][c])
-        count=0
-        for i in forward:
-            if count%2!=0:
-                newres.extend(forward[i])
+        for r in range(len(mat)):
+            for c in range(len(mat[0])):
+                lists[r+c].append(mat[r][c])
+        ans=[]
+        
+        for i in range(len(lists)):
+            if i%2!=0:
+                ans.extend(lists[i])
             else:
-                forward[i].reverse()
-                newres.extend(forward[i])
-            count+=1
-        return newres
+                lists[i].reverse()
+                ans.extend(lists[i])
+        return ans
+
         
