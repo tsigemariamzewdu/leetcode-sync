@@ -1,16 +1,11 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
-        memo={}
-        def dp(i,j):
-            if j<0 or j==len(matrix[0]):
-                return float("inf")
-            if i==len(matrix):
-                return 0
-            state=(i,j)
-            if state not in memo:
-                memo[state]=matrix[i][j]+min(dp(i+1,j-1),dp(i+1,j),dp(i+1,j+1))
-            return memo[state]
-        minCost=float("inf")
-        for i in range(len(matrix[0])):
-            minCost=min(minCost,dp(0,i))
-        return minCost
+        
+        for i in range(1,len(matrix)):
+            for j in range(len(matrix)):
+                left=matrix[i-1][j-1] if j!=0 else float("inf")
+                mid=matrix[i-1][j]
+                right=matrix[i-1][j+1] if j!=len(matrix[0])-1 else float("inf")
+
+                matrix[i][j]+=min(left,right,mid)
+        return min(matrix[-1])
