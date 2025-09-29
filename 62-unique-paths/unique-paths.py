@@ -1,15 +1,12 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        memo=[[-1 for _ in range(n)] for _ in range(m)]
+        memo=[[0 for _ in range(n)] for _ in range(m)]
 
-        def dp(i,j):
-            if i>=m or j>=n:
-                return 0
-            if i==m-1 and j==n-1:
-                return 1
-            
-            if memo[i][j]==-1:
-                memo[i][j]=dp(i+1,j)+dp(i,j+1)
-            return memo[i][j]
-        return dp(0,0)
+        memo[m-1][n-1]=1
+        for i in range(m-1,-1,-1):
+            for j in range(n-1,-1,-1):
+                right=memo[i][j+1] if j!=n-1 else 0
+                down=memo[i+1][j] if i!=m-1 else 0
+                memo[i][j]+= down +right
+        return memo[0][0]
         
