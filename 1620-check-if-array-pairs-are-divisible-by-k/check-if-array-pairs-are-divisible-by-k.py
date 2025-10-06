@@ -1,7 +1,7 @@
 class Solution:
     def canArrange(self, arr: List[int], k: int) -> bool:
-        dictt=defaultdict(int)
-        count=0
+        dictt=[0 for i in range(k)]
+       
         for n in arr:
             dictt[n%k]+=1
         # print(dictt)
